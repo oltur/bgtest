@@ -120,8 +120,13 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
 });
 
 /**
- * API for BorderGuru challenge.
+ * API for Orders.
  */
-app.get("/api/borderguru", apiController.getAddresses);
+app.post("/api/importorders", apiController.postImportOrders);
+app.get("/api/order/:id", apiController.getOrder);
+app.get("/api/order", apiController.getOrderSearch);
+app.post("/api/order", apiController.postOrder);
+app.delete("/api/order/:id", apiController.deleteOrder);
+app.patch("/api/order/", apiController.putOrder);
 
 module.exports = app;

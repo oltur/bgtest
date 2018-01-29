@@ -22,6 +22,7 @@ dotenv.config({ path: ".env.example" });
 import * as homeController from "./controllers/home";
 import * as userController from "./controllers/user";
 import * as apiController from "./controllers/api";
+import * as orderController from "./controllers/order";
 import * as contactController from "./controllers/contact";
 
 
@@ -122,13 +123,13 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
 /**
  * API for Orders.
  */
-app.post("/api/importorders", apiController.postImportOrders);
-app.get("/api/order/:id", apiController.getOrder);
-app.get("/api/order", apiController.getOrderSearch);
-app.post("/api/order", apiController.postOrder);
-app.delete("/api/order/:id", apiController.deleteOrder);
-app.patch("/api/order", apiController.putOrder);
-app.get("/api/ordersCountPerItem", apiController.getCountPerItem);
+app.post("/api/importorders", orderController.postImportOrders);
+app.get("/api/order/:id", orderController.getOrder);
+app.get("/api/order", orderController.getOrderSearch);
+app.post("/api/order", orderController.postOrder);
+app.delete("/api/order/:id", orderController.deleteOrder);
+app.patch("/api/order", orderController.putOrder);
+app.get("/api/ordersCountPerItem", orderController.getCountPerItem);
 
 
 module.exports = app;

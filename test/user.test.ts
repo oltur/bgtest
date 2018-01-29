@@ -1,7 +1,7 @@
 import * as request from "supertest";
 import * as app from "../src/app";
 
-const chai = require('chai");
+const chai = require("chai");
 const expect = chai.expect;
 
 describe("GET /login", () => {

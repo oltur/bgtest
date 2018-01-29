@@ -8,10 +8,10 @@ export type OrderModel = mongoose.Document & {
 };
 
 const orderSchema = new mongoose.Schema({
-  orderId: { type: Number, unique: true, required : true, dropDups: true },
-  companyName: String,
-  customerAddress: String,
-  orderedItem: String,
+  orderId: { type: Number, unique: true, required: true, dropDups: true },
+  companyName: { type: String, required: true },
+  customerAddress: { type: String, required: true },
+  orderedItem: { type: String, required: true }
 
 }, { timestamps: true });
 

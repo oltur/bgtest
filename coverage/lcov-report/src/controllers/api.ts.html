@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.61% </span>
+        <span class="strong">41.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/31</span>
+        <span class='fraction'>5/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">25% </span>
-        <span class="quiet">Branches</span>
+        <span class="quiet">Functions</span>
         <span class='fraction'>1/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>3/9</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">53.33% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/30</span>
+        <span class='fraction'>5/11</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -80,40 +80,7 @@
 35
 36
 37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+38</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,35 +105,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,22 +127,23 @@ import { Response, Request, NextFunction } from "express";
 import { default as Order, OrderModel } from "../models/Order";
 import { IVerifyOptions } from "passport-local";
 import { WriteError } from "mongodb";
+import { Document } from "mongoose";
 &nbsp;
 &nbsp;
 /**
  * GET /api
  * List of API examples.
- */
-export let getApi = (req: Request, res: Response) =&gt; {
-  res.render("api/index", {
-    title: "API Exampl<span class="fstat-no" title="function not covered" >es</span>"
-  });<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+ */<span class="fstat-no" title="function not covered" ></span>
+export let getApi <span class="cstat-no" title="statement not covered" >= (req: Request, res:<span class="fstat-no" title="function not covered" > R</span>esponse) <span class="cstat-no" title="statement not covered" >=&gt; {</span></span>
+  re<span class="cstat-no" title="statement not covered" >s.render("api/index", {</span>
+<span class="cstat-no" title="statement not covered" >    title: "API Examples"<span class="fstat-no" title="function not covered" ></span></span>
+  });<span class="cstat-no" title="statement not covered" ></span>
 };<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
 /**<span class="cstat-no" title="statement not covered" ></span>
- * GET /api/<span class="cstat-no" title="statement not covered" >facebook</span>
+ * GET /api/facebook
  * Facebook API example.
- */<span class="cstat-no" title="statement not covered" ></span>
+ */
 export let getFacebook = (req: Request, res: Response, next: NextFunction) =&gt; {
   const token = req.user.tokens.find((token: any) =&gt; token.kind === "facebook");
   graph.setAccessToken(token.accessToken);
@@ -215,45 +154,13 @@ export let getFacebook = (req: Request, res: Response, next: NextFunction) =&gt;
       profile: results
     });
   });
-};<span class="missing-if-branch" title="else path not taken" >E</span>
-&nbsp;
-export let postImportOrders = (req: Request, res: Response, next: NextFunction) =&gt; {
-  const data: OrderModel[] = [];
-&nbsp;
-  req.body.forEach((elem: any) =&gt; {
-    data.push(elem);
-  });<span class="cstat-no" title="statement not covered" ></span>
-<span class="fstat-no" title="function not covered" ></span>
-  if (req.he<span class="cstat-no" title="statement not covered" >ader("X-Test") == "yes") {</span>
-    res.stat<span class="cstat-no" title="statement not covered" >us(200 + data.len</span>gth);
-    res.send<span class="cstat-no" title="statement not covered" >();</span>
-    res.write("Under Test");
-    next();<span class="fstat-no" title="function not covered" ></span>
-  }<span class="cstat-no" title="statement not covered" ></span>
-  else {<span class="cstat-no" title="statement not covered" ></span>
-    Order.collection.insertMany(data)
-      .then(doc =&gt;<span class="fstat-no" title="function not covered" > {</span>
-        asse<span class="cstat-no" title="statement not covered" >rt.equal(dat</span>a.length, doc.insertedCount);
-        res.<span class="cstat-no" title="statement not covered" >status(2</span>00);
-        res.write("OK");
-      })
-      .catch(err =&gt; {
-        res.status(500);
-        res.write(err.toString());
-      })
-      .then(() =&gt; {
-        res.send();
-        next();
-      });
-  }
-};
-&nbsp;</pre></td></tr>
+};</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jan 28 2018 21:39:35 GMT+0200 (Jerusalem Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jan 29 2018 12:18:53 GMT+0200 (Jerusalem Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

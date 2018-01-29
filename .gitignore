@@ -35,4 +35,4 @@ Thumbs.db
 dist/**/*
 
 # Don't need coverage data
-coverage 
+coverage/**/* 

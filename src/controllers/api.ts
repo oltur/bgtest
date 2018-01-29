@@ -204,7 +204,7 @@ export let putOrder = (req: Request, res: Response, next: NextFunction) => {
 /**
  * GET /api/order/
  * Searches for orders.
- * Example: http://localhost:3000/api/order/?sortKey=orderId&sortOrder=asc&skip=0&limit=1000&$where=this.orderId>='1'%26%26this.companyNamew='Imer22a'
+ * Example: http://localhost:3000/api/order/?sortKey=orderId&sortOrder=asc&skip=0&limit=1000&$where=this.companyName==='Tic-tac4'%26%26this.orderId>=112
  */
 export let getOrderSearch = (req: Request, res: Response, next: NextFunction) => {
 
@@ -222,7 +222,7 @@ export let getOrderSearch = (req: Request, res: Response, next: NextFunction) =>
 
   const sort: any = {};
   sort[sortKey] = sortOrder === "asc" ? 1 : -1;
-  // find data and convert to array (with optional query, skip and limit)
+  // find data and get (with optional query, skip and limit)
   Order.find(query).sort(sort)
     .skip(skip).limit(limit).exec()
     .then(docs => res.status(200)
@@ -233,4 +233,31 @@ export let getOrderSearch = (req: Request, res: Response, next: NextFunction) =>
       res.send();
       next();
     });
+};
+
+/**
+ * GET /api/order/ordersCountPerItem/
+ * Calculates how often each item has been ordered, in descending order.
+ */
+export let getCountPerItem = (req: Request, res: Response, next: NextFunction) => {
+
+  Order.aggregate(
+    [
+      {
+        $group: {
+          _id: "$orderedItem",
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { count: -1 } },
+    ]
+  )
+  .then(docs => res.status(200)
+    .set("Content-Type", "application/json")
+    .write(JSON.stringify(docs)))
+  .catch(err => res.status(500).write(err.toString()))
+  .then(() => {
+    res.send();
+    next();
+  });
 };

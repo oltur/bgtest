@@ -127,6 +127,8 @@ app.get("/api/order/:id", apiController.getOrder);
 app.get("/api/order", apiController.getOrderSearch);
 app.post("/api/order", apiController.postOrder);
 app.delete("/api/order/:id", apiController.deleteOrder);
-app.patch("/api/order/", apiController.putOrder);
+app.patch("/api/order", apiController.putOrder);
+app.get("/api/ordersCountPerItem", apiController.getCountPerItem);
+
 
 module.exports = app;

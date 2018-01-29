@@ -1,27 +1,92 @@
 extends layout
 
 block content
-  h1 Hackathon Starter
-  p.lead A boilerplate for Node.js web applications.
+  h1 BorderGuru Task
+  p.lead Orders management and querying.
   hr
   .row
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    .col-sm-12
+      h2 1. Import initial data
       p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        a.btn.btn-default(href='#', role='button', id="importGo") Go 
       p
-        a.btn.btn-default(href='#', role='button') View details »
+        label(class='control-label', for='importResult') Results
+        textarea.form-control(name="importResult", cols="30", rows="10", id="importResult")
     .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      h2 2. All orders by company
+      p 
+        label(class='control-label', for='companyNameSearch') Company name
+        input.form-control(type="text", name="companyNameSearch", id="companyNameSearch")
       p
-        a.btn.btn-default(href='#', role='button') View details »
+        a.btn.btn-default(href='#', role='button', id="companyNameGo") Go 
+      p
+        label(class='control-label', for='companyNameResult') Results
+        textarea.form-control(name="companyNameResult", cols="30", rows="10", id="companyNameResult")
     .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      h2 3. All orders for address
+      p 
+        label(class='control-label', for='customerAddressSearch') Address
+        input.form-control(type="text", name="customerAddressSearch", id="customerAddressSearch")
       p
-        a.btn.btn-default(href='#', role='button') View details »
+        a.btn.btn-default(href='#', role='button', id="customerAddressSearchGo") Go 
+      p
+        label(class='control-label', for='addressResult') Results
+        textarea.form-control(name="addressResult", cols="30", rows="10", id="addressResult")
+    .col-sm-6
+      h2 4. Create order
+      p 
+        label(class='control-label', for='orderId') Order id
+        input.form-control(type="number", name="orderId", id="orderId")
+      p 
+        label(class='control-label', for='companyName') Company name
+        input.form-control(type="text", name="companyName", id="companyName")
+      p 
+        label(class='control-label', for='customerAddress') Customerm address
+        input.form-control(type="text", name="customerAddress", id="customerAddress")
+      p 
+        label(class='control-label', for='orderedItem') Ordered item
+        input.form-control(type="number", name="orderedItem", id="orderedItem")
+      p
+        a.btn.btn-default(href='#', role='button', id='createGo') Go 
+      p
+        label(class='control-label', for='createResult') Results
+        textarea.form-control(name="createResult", cols="30", rows="10", id="createResult")
+    .col-sm-6
+      h2 5. Update order
+      p 
+        label(class='control-label', for='orderIdUpdate') Order id
+        input.form-control(type="number", name="orderIdUpdate", id="Update")
+      p 
+        label(class='control-label', for='companyName2') Company name
+        input.form-control(type="text", name="companyNameUpdate", id="companyNameUpdate")
+      p 
+        label(class='control-label', for='customerAddressUpdate') Customerm address
+        input.form-control(type="text", name="customerAddressUpdate", id="customerAddressUpdate")
+      p 
+        label(class='control-label', for='orderedItemUpdate') Ordered item
+        input.form-control(type="number", name="orderedItemUpdate", id="orderedItemUpdate")
+      p
+        a.btn.btn-default(href='#', role='button', id='updateGo') Go 
+      p
+        label(class='control-label', for='updateResult') Results
+        textarea.form-control(name="updateResult", cols="30", rows="10", id="updateResult")        
+    .col-sm-6
+      h2 6. Delete order by id
+      p 
+        label(class='control-label', for='idDelete') Order id to delete
+        input.form-control(type="number", name="idDelete", id="idDelete")
+      p
+        a.btn.btn-default(href='#', role='button', id='deleteGo') Go 
+      p
+        label(class='control-label', for='deleteResult') Results
+        textarea.form-control(name="deleteResult", cols="30", rows="10", id="deleteResult")
+    .col-sm-6
+      h2 7. Grouping and sorting
+      p.top-shift 
+        span Display how often each item has been ordered, in descending order
+      p
+        a.btn.btn-default(href='#', role='button', id='groupSortGo') Go 
+      p
+        label(class='control-label', for='groupSortResult') Results
+        textarea.form-control(name="groupSortResult", cols="30", rows="10", id="groupSortResult")
+

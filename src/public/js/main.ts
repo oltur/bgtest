@@ -23,31 +23,31 @@ $(document).ready(function () {
           return response.text();
         })
         .then(data => {
-          document.querySelector("#importResult").value = data;
+          (<HTMLInputElement>document.querySelector("#importResult")).value = data;
         });
     });
 
   document.querySelector("#companyNameGo")
     .addEventListener("click", (event) => {
-      const url = `/api/order/?$where=this.companyName==="${document.querySelector("#companyNameSearch").value}"`;
+      const url = `/api/order/?$where=this.companyName==="${ (<HTMLInputElement>document.querySelector("#companyNameSearch")).value}"`;
       fetch(url)
         .then(response => {
           return response.json();
         })
         .then(data => {
-          document.querySelector("#companyNameResult").value = JSON.stringify(data);
+          (<HTMLInputElement>document.querySelector("#companyNameResult")).value = JSON.stringify(data);
         });
     });
 
   document.querySelector("#customerAddressSearchGo")
     .addEventListener("click", (event) => {
-      const url = `/api/order/?$where=this.customerAddress==="${document.querySelector("#customerAddressSearch").value}"`;
+      const url = `/api/order/?$where=this.customerAddress==="${ (<HTMLInputElement>document.querySelector("#customerAddressSearch")).value}"`;
       fetch(url)
         .then(response => {
           return response.json();
         })
         .then(data => {
-          document.querySelector("#addressResult").value = JSON.stringify(data);
+          (<HTMLInputElement>document.querySelector("#addressResult")).value = JSON.stringify(data);
         });
     });
 
@@ -60,16 +60,16 @@ $(document).ready(function () {
           return response.text();
         })
         .then(data => {
-          document.querySelector("#groupSortResult").value = data;
+          (<HTMLInputElement>document.querySelector("#groupSortResult")).value = data;
         });
     });
 
   document.querySelector("#createGo")
     .addEventListener("click", (event) => {
-      const orderId = document.querySelector("#orderId").value;
-      const companyName = document.querySelector("#companyName").value;
-      const customerAddress = document.querySelector("#customerAddress").value;
-      const orderedItem = document.querySelector("#orderedItem").value;
+      const orderId =  (<HTMLInputElement>document.querySelector("#orderId")).value;
+      const companyName =  (<HTMLInputElement>document.querySelector("#companyName")).value;
+      const customerAddress =  (<HTMLInputElement>document.querySelector("#customerAddress")).value;
+      const orderedItem =  (<HTMLInputElement>document.querySelector("#orderedItem")).value;
       const url = `/api/order`;
       const data = JSON.stringify({ orderId: orderId, companyName: companyName, customerAddress: customerAddress, orderedItem: orderedItem });
 
@@ -84,16 +84,16 @@ $(document).ready(function () {
           return response.text();
         })
         .then(data => {
-          document.querySelector("#createResult").value = data;
+          (<HTMLInputElement>document.querySelector("#createResult")).value = data;
         });
     });
 
   document.querySelector("#updateGo")
     .addEventListener("click", (event) => {
-      const orderId = document.querySelector("#orderIdUpdate").value;
-      const companyName = document.querySelector("#companyNameUpdate").value;
-      const customerAddress = document.querySelector("#customerAddressUpdate").value;
-      const orderedItem = document.querySelector("#orderedItemUpdate").value;
+      const orderId =  (<HTMLInputElement>document.querySelector("#orderIdUpdate")).value;
+      const companyName =  (<HTMLInputElement>document.querySelector("#companyNameUpdate")).value;
+      const customerAddress =  (<HTMLInputElement>document.querySelector("#customerAddressUpdate")).value;
+      const orderedItem =  (<HTMLInputElement>document.querySelector("#orderedItemUpdate")).value;
       const url = `/api/order`;
       const data = JSON.stringify({ orderId: orderId, companyName: companyName, customerAddress: customerAddress, orderedItem: orderedItem });
 
@@ -108,21 +108,21 @@ $(document).ready(function () {
           return response.text();
         })
         .then(data => {
-          document.querySelector("#updateResult").value = data;
+          (<HTMLInputElement>document.querySelector("#updateResult")).value = data;
         });
     });
 
   document.querySelector("#deleteGo")
     .addEventListener("click", (event) => {
-      const url = `/api/order/${document.querySelector("#idDelete").value}`;
+      const url = `/api/order/${ (<HTMLInputElement>document.querySelector("#idDelete")).value}`;
       fetch(url, {
         method: "DELETE"
       })
         .then(response => {
-          return response.json();
+          return response.text();
         })
         .then(data => {
-          document.querySelector("#deleteResult").value = JSON.stringify(data);
+          (<HTMLInputElement>document.querySelector("#deleteResult")).value = data;
         });
     });
 

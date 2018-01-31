@@ -21,28 +21,21 @@ export let postImportOrders = (req: Request, res: Response, next: NextFunction) 
     data.push(elem);
   });
 
-  if (req.header("X-Test") == "yes") {
-    res.status(200 + data.length);
-    res.send();
-    res.write("Under Test");
-    next();
-  }
-  else {
-    Order.collection.insertMany(data)
-      .then(doc => {
-        assert.equal(data.length, doc.insertedCount);
-        res.status(200);
-        res.write("OK");
-      })
-      .catch(err => {
-        res.status(500);
-        res.write(err.toString());
-      })
-      .then(() => {
-        res.send();
-        next();
-      });
-  }
+  Order.collection.insertMany(data)
+    .then(doc => {
+      assert.equal(data.length, doc.insertedCount);
+      res.status(200);
+      res.write("OK");
+    })
+    .catch(err => {
+      res.status(500);
+      res.write(err.toString());
+    })
+    .then(() => {
+      res.send();
+      next();
+    });
+
 };
 
 
@@ -54,29 +47,20 @@ export let postOrder = (req: Request, res: Response, next: NextFunction) => {
 
   const data: OrderModel = req.body;
 
-  if (req.header("X-Test") == "yes") {
-    res.status(201);
-    res.send();
-    res.write("Under Test");
-    next();
-  }
-
-  else {
-    Order.collection.insertOne(data)
-      .then(doc => {
-        assert.equal(1, doc.insertedCount);
-        res.status(200);
-        res.write("OK");
-      })
-      .catch(err => {
-        res.status(500);
-        res.write(err.toString());
-      })
-      .then(() => {
-        res.send();
-        next();
-      });
-  }
+  Order.collection.insertOne(data)
+    .then(doc => {
+      assert.equal(1, doc.insertedCount);
+      res.status(200);
+      res.write("OK");
+    })
+    .catch(err => {
+      res.status(500);
+      res.write(err.toString());
+    })
+    .then(() => {
+      res.send();
+      next();
+    });
 };
 
 /**
@@ -85,12 +69,6 @@ export let postOrder = (req: Request, res: Response, next: NextFunction) => {
  */
 export let deleteOrder = (req: Request, res: Response, next: NextFunction) => {
 
-  if (req.header("X-Test") == "yes") {
-    res.status(201);
-    res.send();
-    res.write("Under Test");
-    next();
-  }
   Order.remove({ orderId: req.params.id })
     .then((doc: any) => {
       assert.equal(doc.result.n, 1, "No suitable orders found");
@@ -112,13 +90,6 @@ export let deleteOrder = (req: Request, res: Response, next: NextFunction) => {
  * GETs an order by id.
  */
 export let getOrder = (req: Request, res: Response, next: NextFunction) => {
-
-  if (req.header("X-Test") == "yes") {
-    res.status(201);
-    res.send();
-    res.write("Under Test");
-    next();
-  }
 
   const orderId = parseInt(req.params.id);
 
@@ -145,13 +116,6 @@ export let getOrder = (req: Request, res: Response, next: NextFunction) => {
  * Updates an order.
  */
 export let putOrder = (req: Request, res: Response, next: NextFunction) => {
-
-  if (req.header("X-Test") == "yes") {
-    res.status(201);
-    res.send();
-    res.write("Under Test");
-    next();
-  }
 
   Order.findOne({ orderId: parseInt(req.body.orderId) }).exec()
     .then((order: OrderModel) => {
@@ -181,7 +145,7 @@ export let putOrder = (req: Request, res: Response, next: NextFunction) => {
  */
 export let getOrderSearch = (req: Request, res: Response, next: NextFunction) => {
 
-  const limit = parseInt(req.query.limit, 10) || 10, // default limit to 10 docs
+  const limit = parseInt(req.query.limit, 10) || 1000, // default limit to 1000 docs.
     skip = parseInt(req.query.skip, 10) || 0, // default skip to 0 docs
     sortKey = req.query.sortKey,
     sortOrder = req.query.sortOrder,
@@ -196,12 +160,16 @@ export let getOrderSearch = (req: Request, res: Response, next: NextFunction) =>
   const sort: any = {};
   sort[sortKey] = sortOrder === "asc" ? 1 : -1;
   // find data and get (with optional query, skip and limit)
-  Order.find(query).sort(sort)
-    .skip(skip).limit(limit).exec()
+  Order.find(query)
+    .sort(sort)
+    .skip(skip)
+    .limit(limit)
+    .exec()
     .then(docs => res.status(200)
       .set("Content-Type", "application/json")
       .write(JSON.stringify(docs)))
-    .catch(err => res.status(500).write(err.toString()))
+    .catch(err => res.status(500)
+      .write(err.toString()))
     .then(() => {
       res.send();
       next();
@@ -234,3 +202,4 @@ export let getCountPerItem = (req: Request, res: Response, next: NextFunction) =
       next();
     });
 };
+
